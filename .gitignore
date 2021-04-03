@@ -60,3 +60,6 @@ hw0/wc/wc
 hw0/words/words
 !hw0/words/wc_sort.o
 
+
+# IDEs
+.vscode/
