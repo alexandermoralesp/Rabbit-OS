@@ -1,16 +1,19 @@
+.DEFAULT_GOAL := default
+
 CC?=gcc
-CFLAGS?=-g
-BINARIES=map limits
+CFLAGS?=-Wall
+SOURCES=main.c word_count.c
+# comment the following out if you are providing your own sort_words
+LIBRARIES=wc_sort.o
+BINARIES=words
 
-default:
-	make map
-	make limits
-
-map:
-	$(CC) $(CFLAGS) map.c recurse.c -o map
-
-limits:
-	$(CC) $(CFLAGS) limits.c -o limits
+%: %.c
+	$(CC) $(CFLAGS) $(LIBRARIES) -o $@ $^
 
 clean:
 	rm -f $(BINARIES)
+
+executable:
+	$(CC) $(CFLAGS) $(SOURCES) $(LIBRARIES) -o $(BINARIES)
+
+default: executable
