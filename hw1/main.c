@@ -102,6 +102,19 @@ int main(int argc, char* argv[]) {
 	printf("The total number of rabbits is: %zu\n", num_rabbits);
 	printf("The total number of rabbits breeds is: %zu\n", num_breeds);
 
+	char breed_searched [MAX_WORD_LEN];
+	printf("I want to search the breed:\n");
+	scanf("%[^\n]", &breed_searched);
+	rabbit_t* rabbit_breed_searched = find_rabbit(&rabbits, breed_searched);
+	if (rabbit_breed_searched) printf("I found %s breed with %i rabbits.\n", rabbit_breed_searched->breed, rabbit_breed_searched->count);
+	else printf("I don't found the rabbit D:\n");
+
+	printf("I will print the rabbits sorted alfabetically\n");
+	rabbit_sort(&rabbits, less_word);
+  fprint_rabbits(&rabbits, stdout);
+
+	printf("I will print the rabbits sorted by the cuantity of rabbits in each breed\n");
+	rabbit_sort(&rabbits, less_count);
   fprint_rabbits(&rabbits, stdout);
   return 0;
 }
