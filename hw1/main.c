@@ -76,7 +76,8 @@ int main(int argc, char* argv[]) {
 
 	printf("Welcome to the rabbit farm!\n");
 	
-	FILE* infile = NULL;
+	FILE* infile;
+  infile = fopen("test.txt", "r");
 	size_t num_rabbits = 0;
 	size_t num_breeds = 0;
   /* Create the empty data structure. */
@@ -84,14 +85,14 @@ int main(int argc, char* argv[]) {
 
 	printf("Starting rabbit list ...\n");
 	init_rabbits(&rabbits);
-
-	 if ((argc - optind) < 1) {
-    // No input file specified, instead, read from STDIN instead.
-    infile = stdin;
-  } else {
-    // At least one file specified. 
-    infile = fopen(argv[argc-1], "r");
-  }
+  infile = fopen("test.txt", "r");
+	//  if ((argc - optind) < 1) {
+  //   // No input file specified, instead, read from STDIN instead.
+  //   infile = stdin;
+  // } else {
+  //   // At least one file specified. 
+  //   infile = fopen(argv[argc-1], "r");
+  // }
 
 	printf("Start counting rabbits ...\n");
 	add_rabbits(&rabbits, infile);
@@ -116,5 +117,7 @@ int main(int argc, char* argv[]) {
 	printf("I will print the rabbits sorted by the cuantity of rabbits in each breed\n");
 	rabbit_sort(&rabbits, less_count);
   fprint_rabbits(&rabbits, stdout);
+  
+  fclose(infile);
   return 0;
 }
