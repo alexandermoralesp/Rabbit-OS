@@ -45,6 +45,7 @@ rabbit_t* find_rabbit(rabbit_list_t* wclist, char* word) {
       return r;
     }
    }
+  
   return NULL; 
 }
 
@@ -61,7 +62,7 @@ rabbit_t* add_rabbit(rabbit_list_t* wclist, char* word) {
 }
 
 void fprint_rabbits(rabbit_list_t* wclist, FILE* outfile) {
-  
+
 }
 
 static bool less_list(const struct list_elem* ewc1,
